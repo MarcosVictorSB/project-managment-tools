@@ -1,7 +1,7 @@
 const ServiceProject = require('./ServiceProject')
 const ServiceTypeUser = require('./ServiceTypeUser')
 const ServiceUser = require('./ServiceUser')
-const ServiceTypeTask = require('./ServiceTypeUser')
+const ServiceTypeTask = require('./ServiceTypeTasks')
 const ServiceVersion = require('./ServiceVersion')
 const ServiceStatusTask = require('./ServiceStatusTask')
 

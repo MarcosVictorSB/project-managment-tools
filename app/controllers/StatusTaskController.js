@@ -7,7 +7,6 @@ class StatusTaskController {
    static async getAllRegistries(req, res){
       try {
          const allRegister = await service.getAllRegistries()
-         console.log(allRegister)
          return res.status(200).json(allRegister)   
       } catch (error) {
          return res.status(500).json({ message: error })
