@@ -1,8 +1,8 @@
-const { ServiceTypeUser } = require('../service')
-const service = new ServiceTypeUser()
+const { ServiceUser } = require('../service')
+const service = new ServiceUser()
 
 
-class TypeUsersController {
+class UsersController {
    
    static async getAllRegistries(req, res){
       try {
@@ -60,7 +60,7 @@ class TypeUsersController {
          const registry = await service.getOneRegistry(Number(id))
 
          if(!registry){
-            res.status(200).json({message: `Nenhum tipo de usuario com este id ${id}`})   
+            res.status(200).json({message: `Nenhum usuario com este id ${id}`})   
          }
 
          res.status(200).json(registry)
@@ -72,4 +72,4 @@ class TypeUsersController {
 }
 
 
-module.exports = TypeUsersController
+module.exports = UsersController

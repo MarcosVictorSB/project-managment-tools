@@ -1,6 +1,7 @@
 const bodyParser = require('body-parser')
 const project = require('./projects.routes')
 const typeUsers = require('./typeusers.routes')
+const user = require('./users.routes')
 
 
 module.exports = app => {
@@ -8,7 +9,8 @@ module.exports = app => {
       bodyParser.json(),
       bodyParser.urlencoded({ extended: false }),
       project,
-      typeUsers
+      typeUsers,
+      user
    )
 }
 
