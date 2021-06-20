@@ -1,10 +1,10 @@
 const Service = require('./Service')
 const database = require('../models')
 
-class ServiceTypeUser extends Service {
+class ServiceVersion extends Service {
    constructor(){
-      super('TypeUsers')
+      super('Version')
    }
 }
 
-module.exports = ServiceTypeUser
+module.exports = ServiceVersion
