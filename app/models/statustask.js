@@ -14,10 +14,10 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   StatusTask.init({
-    email: DataTypes.STRING
+    name: DataTypes.STRING
   }, {
     sequelize,
-    modelName: 'StatusTask',
+    modelName: 'StatusTasks',
   });
   return StatusTask;
 };

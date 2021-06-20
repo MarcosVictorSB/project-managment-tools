@@ -29,7 +29,7 @@ class VersionController {
          const { id } = req.params
          const deletedRegistry = await service.deleteRegistry(id);
          if(deletedRegistry){
-            return res.status(200).json({ message: `Tipo de usuario ${id} deletado`})
+            return res.status(200).json({ message: `Versão ${id} deletado`})
          }else{
             return res.status(200).json({ message: `Nenhum informação encontrada`})
          }         
@@ -45,10 +45,10 @@ class VersionController {
          const updatedRegistry =  await service.updateRegistry(newInfo, Number(id));
          
          if(!updatedRegistry[0]){
-            return res.status(200).json({ message: `Tipo de usuario não encontrado`})   
+            return res.status(200).json({ message: `Versão não encontrado`})   
          }
 
-         return res.status(200).json({ message: `Usuario ${id} atualizado`})
+         return res.status(200).json({ message: `Versão ${id} atualizado`})
       } catch (error) {
          return res.status(500).json(error.message) 
       }
@@ -60,7 +60,7 @@ class VersionController {
          const registry = await service.getOneRegistry(Number(id))
 
          if(!registry){
-            res.status(200).json({message: `Nenhum usuario com este id ${id}`})   
+            res.status(200).json({message: `Nenhuma versão com este id ${id}`})   
          }
 
          res.status(200).json(registry)
