@@ -11,6 +11,5 @@ module.exports = {
    ServiceUser: ServiceUser,
    ServiceTypeTask: ServiceTypeTask,
    ServiceVersion: ServiceVersion,
-   ServiceStatusTask: ServiceStatusTask
-   
+   ServiceStatusTask: ServiceStatusTask   
 }
