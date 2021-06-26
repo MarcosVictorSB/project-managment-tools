@@ -8,10 +8,10 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      titulo: {
+      title: {
         type: Sequelize.STRING
       },
-      descricao: {
+      description: {
         type: Sequelize.STRING
       },
       id_project: {
