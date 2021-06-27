@@ -13,6 +13,10 @@ module.exports = (sequelize, DataTypes) => {
       Project.hasOne(models.Tasks, {
         foreignKey: 'id_project'
       })
+      // Project.belongsToMany(models.Users, {
+      //   through: 'Users_Projects',
+      //   foreignKey: 'id_projects'
+      //  })
     }
   };
   Project.init({
