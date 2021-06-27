@@ -29,7 +29,7 @@ module.exports = {
         type: Sequelize.INTEGER,
         references: { model: 'StatusTasks', key: 'id' }
       },
-      id_versao: {
+      id_version: {
         allowNull: true,
         type: Sequelize.INTEGER,
         references: { model: 'Versions', key: 'id' }

@@ -9,7 +9,7 @@ module.exports = {
         id_project: null,
         id_user: null,
         id_status_task: null,
-        id_versao: null,
+        id_version: null,
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -17,10 +17,10 @@ module.exports = {
       {
         title: 'Criar uma tela de criar um usuario',
         description: 'Criar um formulario onde informe o email e passaword para que o usuario possa se cadastrar',
-        id_project: null,
-        id_user: null,
-        id_status_task: null,
-        id_versao: null,
+        id_project: 1,
+        id_user: 1,
+        id_status_task: 1,
+        id_version: 1,
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -31,7 +31,7 @@ module.exports = {
         id_project: null,
         id_user: null,
         id_status_task: null,
-        id_versao: null,
+        id_version: null,
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -41,7 +41,7 @@ module.exports = {
         id_project: null,
         id_user: null,
         id_status_task: null,
-        id_versao: null,
+        id_version: null,
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -51,7 +51,7 @@ module.exports = {
         id_project: null,
         id_user: null,
         id_status_task: null,
-        id_versao: null,
+        id_version: null,
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -61,7 +61,7 @@ module.exports = {
         id_project: null,
         id_user: null,
         id_status_task: null,
-        id_versao: null,
+        id_version: null,
         createdAt: new Date(),
         updatedAt: new Date()
       }

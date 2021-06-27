@@ -11,7 +11,9 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       Users.hasOne(models.TypeUser)
-      Users.belongsTo(models.Tasks)
+      Users.hasOne(models.Tasks, {
+        foreignKey: 'id_user'
+      })
     }
   };
   Users.init({

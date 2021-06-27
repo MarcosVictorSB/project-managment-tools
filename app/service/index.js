@@ -4,6 +4,7 @@ const ServiceUser = require('./ServiceUser')
 const ServiceTypeTask = require('./ServiceTypeTasks')
 const ServiceVersion = require('./ServiceVersion')
 const ServiceStatusTask = require('./ServiceStatusTask')
+const ServiceTasks = require('./ServiceTasks')
 
 module.exports = {
    ServiceProject: ServiceProject,
@@ -11,5 +12,6 @@ module.exports = {
    ServiceUser: ServiceUser,
    ServiceTypeTask: ServiceTypeTask,
    ServiceVersion: ServiceVersion,
-   ServiceStatusTask: ServiceStatusTask   
+   ServiceStatusTask: ServiceStatusTask,
+   ServiceTask: ServiceTasks   
 }

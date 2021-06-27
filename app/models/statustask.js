@@ -10,7 +10,9 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      StatusTask.belongsTo(models.Tasks)
+      StatusTask.hasOne(models.Tasks,{
+        foreignKey: 'id_status_task'
+      })
     }
   };
   StatusTask.init({

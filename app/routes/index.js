@@ -5,6 +5,7 @@ const user = require('./users.routes')
 const typeTask = require('./typetask.routes')
 const statusTask = require('./statustask.routes')
 const version = require('./version.routes')
+const tasks = require('./tasks.routes')
 
 
 module.exports = app => {
@@ -16,7 +17,8 @@ module.exports = app => {
       user,
       typeTask,
       statusTask,
-      version
+      version,
+      tasks
    )
 }
 
