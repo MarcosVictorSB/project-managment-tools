@@ -5,7 +5,7 @@ const service = new ServiceTask()
 
 class TasksController {
    
-   static async getAllRegistries(req, res){
+   static async getAllTask(req, res){
       try {
          const allRegister = await service.getAllRegistries()
          return res.status(200).json(allRegister)   
@@ -13,8 +13,8 @@ class TasksController {
          return res.status(500).json({ message: error })
       }
    }
-
-   static async createRegistry(req, res){
+ 
+   static async createNewTask(req, res){
       try {
          const datas = req.body
          const newTypeUser = await service.createRegistry(datas)
@@ -25,7 +25,7 @@ class TasksController {
       }
    }
    
-   static async deleteRegistry(req, res){
+   static async deleteTask(req, res){
       try {
          const { id } = req.params
          const deletedRegistry = await service.deleteRegistry(id);
@@ -39,7 +39,7 @@ class TasksController {
       }
    }
 
-   static async updateRegistry(req, res){
+   static async updateTask(req, res){
       try {
          const { id } = req.params
          const newInfo = req.body
@@ -55,7 +55,7 @@ class TasksController {
       }
    }
 
-   static async getOneRegistry(req, res){
+   static async getOneTask(req, res){
       try {
          const { id } = req.params
          const registry = await service.getOneRegistry(Number(id))

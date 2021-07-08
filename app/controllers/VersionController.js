@@ -1,10 +1,10 @@
 const { ServiceVersion } = require('../service')
 const service = new ServiceVersion()
 
-
+ 
 class VersionController {
    
-   static async getAllRegistries(req, res){
+   static async getAllVersions(req, res){
       try {
          const allTypeUser = await service.getAllRegistries()
          return res.status(200).json(allTypeUser)   
@@ -13,7 +13,7 @@ class VersionController {
       }
    }
 
-   static async createRegistry(req, res){
+   static async createNewVersion(req, res){
       try {
          const datas = req.body
          const newTypeUser = await service.createRegistry(datas)
@@ -24,7 +24,7 @@ class VersionController {
       }
    }
    
-   static async deleteRegistry(req, res){
+   static async deleteVersion(req, res){
       try {
          const { id } = req.params
          const deletedRegistry = await service.deleteRegistry(id);
@@ -38,7 +38,7 @@ class VersionController {
       }
    }
 
-   static async updateRegistry(req, res){
+   static async updateVersion(req, res){
       try {
          const { id } = req.params
          const newInfo = req.body
@@ -54,7 +54,7 @@ class VersionController {
       }
    }
 
-   static async getOneRegistry(req, res){
+   static async getOneVersion(req, res){
       try {
          const { id } = req.params
          const registry = await service.getOneRegistry(Number(id))

@@ -4,10 +4,10 @@
  const routes = Router()
 
  routes
-   .get('/tipo-tarefa',TypeTaskController.getAllRegistries)
-   .post('/tipo-tarefa/criar', TypeTaskController.createRegistry)
-   .get('/tipo-tarefa/:id', TypeTaskController.getOneRegistry)
-   .delete('/tipo-tarefa/:id', TypeTaskController.deleteRegistry)
-   .put('/tipo-tarefa/:id', TypeTaskController.updateRegistry)
+   .get('/tipo-tarefa',TypeTaskController.getAllTypeTask)
+   .post('/tipo-tarefa/criar', TypeTaskController.createNewTypeTask)
+   .get('/tipo-tarefa/:id', TypeTaskController.getOneTypeTask)
+   .delete('/tipo-tarefa/:id', TypeTaskController.deleteTypeTask)
+   .put('/tipo-tarefa/:id', TypeTaskController.updateTypeTask)
 
 module.exports = routes

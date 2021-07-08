@@ -4,10 +4,10 @@
  const routes = Router()
 
  routes
-   .get('/status-tarefa', StatusTaskController.getAllRegistries)
-   .post('/status-tarefa/criar', StatusTaskController.createRegistry)
-   .get('/status-tarefa/:id', StatusTaskController.getOneRegistry)
-   .delete('/status-tarefa/:id', StatusTaskController.deleteRegistry)
-   .put('/status-tarefa/:id', StatusTaskController.updateRegistry)
+   .get('/status-tarefa', StatusTaskController.getAllStatusTask)
+   .post('/status-tarefa/criar', StatusTaskController.createNewStatusTask)
+   .get('/status-tarefa/:id', StatusTaskController.getOneStatusTask)
+   .delete('/status-tarefa/:id', StatusTaskController.deleteStatusTask)
+   .put('/status-tarefa/:id', StatusTaskController.updateStatusTask)
 
 module.exports = routes

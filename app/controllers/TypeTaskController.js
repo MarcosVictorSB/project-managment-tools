@@ -2,9 +2,9 @@ const { ServiceTypeTask } = require('../service')
 const service = new  ServiceTypeTask()
 
 
-class TypeTaskController {
+class TypeTaskController { 
    
-   static async getAllRegistries(req, res){
+   static async getAllTypeTask(req, res){
       try {
          const allRegister = await service.getAllRegistries()
          console.log('chegou aqui: ', allRegister)
@@ -14,7 +14,7 @@ class TypeTaskController {
       }
    }
 
-   static async createRegistry(req, res){
+   static async createNewTypeTask(req, res){
       try {
          const datas = req.body
          const newTypeUser = await service.createRegistry(datas)
@@ -25,7 +25,7 @@ class TypeTaskController {
       }
    }
    
-   static async deleteRegistry(req, res){
+   static async deleteTypeTask(req, res){
       try {
          const { id } = req.params
          const deletedRegistry = await service.deleteRegistry(id);
@@ -39,7 +39,7 @@ class TypeTaskController {
       }
    }
 
-   static async updateRegistry(req, res){
+   static async updateTypeTask(req, res){
       try {
          const { id } = req.params
          const newInfo = req.body
@@ -55,7 +55,7 @@ class TypeTaskController {
       }
    }
 
-   static async getOneRegistry(req, res){
+   static async getOneTypeTask(req, res){
       try {
          const { id } = req.params
          const registry = await service.getOneRegistry(Number(id))

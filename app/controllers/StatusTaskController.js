@@ -2,9 +2,9 @@ const { ServiceStatusTask } = require('../service')
 const service = new ServiceStatusTask()
 
 
-class StatusTaskController {
+class StatusTaskController { 
    
-   static async getAllRegistries(req, res){
+   static async getAllStatusTask(req, res){
       try {
          const allRegister = await service.getAllRegistries()
          return res.status(200).json(allRegister)   
@@ -13,7 +13,7 @@ class StatusTaskController {
       }
    }
 
-   static async createRegistry(req, res){
+   static async createNewStatusTask(req, res){
       try {
          const datas = req.body
          const newTypeUser = await service.createRegistry(datas)
@@ -24,7 +24,7 @@ class StatusTaskController {
       }
    }
    
-   static async deleteRegistry(req, res){
+   static async deleteStatusTask(req, res){
       try {
          const { id } = req.params
          const deletedRegistry = await service.deleteRegistry(id);
@@ -38,7 +38,7 @@ class StatusTaskController {
       }
    }
 
-   static async updateRegistry(req, res){
+   static async updateStatusTask(req, res){
       try {
          const { id } = req.params
          const newInfo = req.body
@@ -54,7 +54,7 @@ class StatusTaskController {
       }
    }
 
-   static async getOneRegistry(req, res){
+   static async getOneStatusTask(req, res){
       try {
          const { id } = req.params
          const registry = await service.getOneRegistry(Number(id))

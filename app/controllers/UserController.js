@@ -4,7 +4,7 @@ const service = new ServiceUser()
 
 class UsersController {
    
-   static async getAllRegistries(req, res){
+   static async getAllUser(req, res){
       try {
          const allTypeUser = await service.getAllRegistries()
          return res.status(200).json(allTypeUser)   
@@ -13,7 +13,7 @@ class UsersController {
       }
    }
 
-   static async createRegistry(req, res){
+   static async createNewUser(req, res){
       try {
          const datas = req.body
          const newTypeUser = await service.createRegistry(datas)
@@ -24,7 +24,7 @@ class UsersController {
       }
    }
    
-   static async deleteRegistry(req, res){
+   static async deleteUser(req, res){
       try {
          const { id } = req.params
          const deletedRegistry = await service.deleteRegistry(id);
@@ -38,7 +38,7 @@ class UsersController {
       }
    }
 
-   static async updateRegistry(req, res){
+   static async updateUser(req, res){
       try {
          const { id } = req.params
          const newInfo = req.body
@@ -54,7 +54,7 @@ class UsersController {
       }
    }
 
-   static async getOneRegistry(req, res){
+   static async getOneUser(req, res){
       try {
          const { id } = req.params
          const registry = await service.getOneRegistry(Number(id))

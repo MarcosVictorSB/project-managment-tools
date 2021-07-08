@@ -4,10 +4,10 @@
  const routes = Router()
 
  routes
-   .get('/tipos-usuarios',TypeUserController.getAllRegistries)
-   .post('/tipos-usuarios/criar', TypeUserController.createRegistry)
-   .get('/tipos-usuarios/:id', TypeUserController.getOneRegistry)
-   .delete('/tipos-usuarios/:id', TypeUserController.deleteRegistry)
-   .put('/tipos-usuarios/:id', TypeUserController.updateRegistry)
+   .get('/tipos-usuarios',TypeUserController.getAllTypeUsers)
+   .post('/tipos-usuarios/criar', TypeUserController.createNewTypeUser)
+   .get('/tipos-usuarios/:id', TypeUserController.getOneTypeUser)
+   .delete('/tipos-usuarios/:id', TypeUserController.deleteTypeUser)
+   .put('/tipos-usuarios/:id', TypeUserController.updateTypeUser)
 
 module.exports = routes
