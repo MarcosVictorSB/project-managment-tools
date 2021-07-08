@@ -1,3 +1,4 @@
+const bcrypt = require('bcryptjs')
 const { ServiceUser } = require('../service')
 const service = new ServiceUser()
 
@@ -15,9 +16,21 @@ class UsersController {
 
    static async createNewUser(req, res){
       try {
-         const datas = req.body
-         const newTypeUser = await service.createRegistry(datas)
-         return res.status(200).json(newTypeUser)
+         const name = req.body.name
+         const email = req.body.email
+         const password = req.body.password
+
+         const existUser = await service.getAllRegistries({ email: email })
+
+         if(existUser.length != 0){
+            return res.status(200).json({message: 'email em uso'})
+         }
+
+         var salt = bcrypt.genSaltSync(10)
+         var hash = bcrypt.hashSync(password, salt)
+
+         const newUser = await service.createRegistry({ name: name, email: email, password: hash })
+         return res.status(200).json(newUser)
          
       } catch (error) {
          return res.status(500).json(error.message)
