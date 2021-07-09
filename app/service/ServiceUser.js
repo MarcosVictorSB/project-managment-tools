@@ -6,10 +6,6 @@ class ServiceUser extends Service {
       super('Users')
    }
 
-   async createNewUser(where = {}){
-      
-   }
-
    async login(where = {}){
       return database[this.nameModel].findAll({where: { ... where} })
    }

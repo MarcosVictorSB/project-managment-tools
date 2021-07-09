@@ -16,9 +16,8 @@ class UsersController {
 
    static async createNewUser(req, res){
       try {
-         const name = req.body.name
-         const email = req.body.email
-         const password = req.body.password
+
+         const { name, email, password } = req.body
 
          const existUser = await service.getAllRegistries({ email: email })
 
@@ -29,7 +28,15 @@ class UsersController {
          var salt = bcrypt.genSaltSync(10)
          var hash = bcrypt.hashSync(password, salt)
 
-         const newUser = await service.createRegistry({ name: name, email: email, password: hash })
+         const newUser = await service.
+            createRegistry(
+               {  
+                  name: name, 
+                  email: email, 
+                  password: hash,
+                  is_active: 1,
+                  id_typeuser: 2,
+               })
          return res.status(200).json(newUser)
          
       } catch (error) {
