@@ -25,8 +25,7 @@ class UsersController {
             return res.status(200).json({message: 'email em uso'})
          }
 
-         var salt = bcrypt.genSaltSync(10)
-         var hash = bcrypt.hashSync(password, salt)
+         var hash = this.createHash(password)
 
          const newUser = await service.
             createRegistry(
@@ -63,14 +62,9 @@ class UsersController {
          const { id } = req.params
          const newInfo = req.body         
 
-         const newPassword = newInfo.password
-
-
-         var salt = bcrypt.genSaltSync(10)
-         var hash = bcrypt.hashSync(newPassword, salt)
-
+         const newPassword = newInfo.password         
+         var hash = this.createHash(newPassword)
          newInfo.password = hash
-
 
          const updatedRegistry =  await service.updateRegistry(newInfo, Number(id));
          
@@ -98,6 +92,13 @@ class UsersController {
          return res.status(500).json(error)
       }
    }
+
+   createHash(password){
+      var salt = bcrypt.genSaltSync(10)
+      return bcrypt.hashSync(password, salt)
+   }
+
+
 
 }
 
