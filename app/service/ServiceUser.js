@@ -6,8 +6,12 @@ class ServiceUser extends Service {
       super('Users')
    }
 
-   async login(where = {}){
-      return database[this.nameModel].findAll({where: { ... where} })
+   async existThisUserByEmail(email){
+      return database[this.nameModel].findAll({ where: { email: email }})
+   }
+
+   isEmpty(obj){
+      return Object.keys(obj).length === 0 && obj.constructor === Object
    }
 }
 

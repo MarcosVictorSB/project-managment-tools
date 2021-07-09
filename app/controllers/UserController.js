@@ -61,7 +61,17 @@ class UsersController {
    static async updateUser(req, res){
       try {
          const { id } = req.params
-         const newInfo = req.body
+         const newInfo = req.body         
+
+         const newPassword = newInfo.password
+
+
+         var salt = bcrypt.genSaltSync(10)
+         var hash = bcrypt.hashSync(newPassword, salt)
+
+         newInfo.password = hash
+
+
          const updatedRegistry =  await service.updateRegistry(newInfo, Number(id));
          
          if(!updatedRegistry[0]){

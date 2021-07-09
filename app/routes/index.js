@@ -6,7 +6,7 @@ const typeTask = require('./typetask.routes')
 const statusTask = require('./statustask.routes')
 const version = require('./version.routes')
 const tasks = require('./tasks.routes')
-const login = require('./login.routes')
+const auth = require('./auth.routes')
 
 
 module.exports = app => {
@@ -20,7 +20,7 @@ module.exports = app => {
       statusTask,
       version,
       tasks,
-      login
+      auth,
    )
 }
 
