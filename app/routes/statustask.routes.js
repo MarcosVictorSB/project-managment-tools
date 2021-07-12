@@ -1,13 +1,14 @@
  const Router = require('express')
  const StatusTaskController = require('../controllers/StatusTaskController.js')
+ const auth = require('../middleware/auth')
 
  const routes = Router()
 
  routes
-   .get('/status-tarefa', StatusTaskController.getAllStatusTask)
-   .post('/status-tarefa/criar', StatusTaskController.createNewStatusTask)
-   .get('/status-tarefa/:id', StatusTaskController.getOneStatusTask)
-   .delete('/status-tarefa/:id', StatusTaskController.deleteStatusTask)
-   .put('/status-tarefa/:id', StatusTaskController.updateStatusTask)
+   .get('/status-tarefa', auth, StatusTaskController.getAllStatusTask)
+   .post('/status-tarefa/criar', auth, StatusTaskController.createNewStatusTask)
+   .get('/status-tarefa/:id', auth, StatusTaskController.getOneStatusTask)
+   .delete('/status-tarefa/:id', auth, StatusTaskController.deleteStatusTask)
+   .put('/status-tarefa/:id', auth, StatusTaskController.updateStatusTask)
 
 module.exports = routes

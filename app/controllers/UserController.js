@@ -14,18 +14,16 @@ class UsersController {
       }
    }
 
-   static async createNewUser(req, res){
+   static async createNewUser(req, res){      
       try {
 
          const { name, email, password } = req.body
-
          const existUser = await service.getAllRegistries({ email: email })
-
          if(existUser.length != 0){
             return res.status(200).json({message: 'email em uso'})
          }
 
-         var hash = this.createHash(password)
+         var hash = new UsersController().createHash(password)
 
          const newUser = await service.
             createRegistry(
@@ -36,6 +34,7 @@ class UsersController {
                   is_active: 1,
                   id_typeuser: 2,
                })
+               
          return res.status(200).json(newUser)
          
       } catch (error) {
@@ -97,8 +96,6 @@ class UsersController {
       var salt = bcrypt.genSaltSync(10)
       return bcrypt.hashSync(password, salt)
    }
-
-
 
 }
 

@@ -1,13 +1,14 @@
 const Router = require('express')
 const TasksController = require('../controllers/TasksController')
+const auth = require('../middleware/auth')
 
 const routes = Router()
 
 routes
-  .get('/tasks',TasksController.getAllTask)
-  .post('/tasks/criar', TasksController.createNewTask)
-  .get('/tasks/:id', TasksController.getOneTask)
-  .delete('/tasks/:id', TasksController.deleteTask)
-  .put('/tasks/:id', TasksController.updateTask)
+  .get('/tasks', auth, TasksController.getAllTask)
+  .post('/tasks/criar', auth, TasksController.createNewTask)
+  .get('/tasks/:id', auth, TasksController.getOneTask)
+  .delete('/tasks/:id', auth, TasksController.deleteTask)
+  .put('/tasks/:id', auth, TasksController.updateTask)
 
 module.exports = routes
