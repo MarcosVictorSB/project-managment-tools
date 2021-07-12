@@ -1,11 +1,13 @@
 'use strict';
 const {
-  Model
+  Model 
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class TypeUser extends Model {
     static associate(models) {
-      TypeUser.belongsTo(models.Users)
+      TypeUser.hasOne(models.Users, {
+        foreignKey: 'id_typeuser'
+      })
     }
   };
   TypeUser.init({
