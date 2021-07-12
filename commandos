@@ -4,3 +4,10 @@ npx sequelize-cli init
 
 -- criando model.
 npx sequelize-cli model:create --name Users --attributes email:string,password:string,name:string,is_active:boolean
+
+-- migrate:
+-- npx sequelize-cli db:migrate
+
+
+-- seed all:
+npx sequelize-cli db:seed:all

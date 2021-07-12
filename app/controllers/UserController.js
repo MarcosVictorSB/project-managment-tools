@@ -62,7 +62,7 @@ class UsersController {
          const newInfo = req.body         
 
          const newPassword = newInfo.password         
-         var hash = this.createHash(newPassword)
+         var hash =  new UsersController().createHash(newPassword)
          newInfo.password = hash
 
          const updatedRegistry =  await service.updateRegistry(newInfo, Number(id));
