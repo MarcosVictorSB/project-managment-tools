@@ -14,9 +14,29 @@ module.exports = (sequelize, DataTypes) => {
     }
   }; 
   Users.init({
-    email: DataTypes.STRING,
+    email: {
+      type: DataTypes.STRING,
+      validate: {
+        isEmail: {
+          args: true,
+          msg: 'Formato de e-mail invalido. Exemplo de email válido: email@com.br'
+        },
+        notEmpty: {
+          args: true,
+          msg: 'O email não pode está vazio'
+        }
+      }
+    },
     password: DataTypes.STRING,
-    name: DataTypes.STRING,
+    name: {
+      type: DataTypes.STRING,
+      validate: {
+        notEmpty:{
+          args: true,
+          msg: 'O nome não pode está vazio'
+        }
+      }
+    },
     is_active: DataTypes.BOOLEAN
   }, {
     sequelize,

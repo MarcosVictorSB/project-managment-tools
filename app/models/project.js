@@ -12,9 +12,33 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   Project.init({
-    name: DataTypes.STRING,
-    identification: DataTypes.STRING,
-    description: DataTypes.STRING,
+    name: {
+      type: DataTypes.STRING,
+      validate: {
+        notEmpty:{
+          args: true,
+          msg: 'O nome não pode está vazio'
+        }
+      }
+    },
+    identification: {
+      type: DataTypes.STRING,
+      validate: {
+        notEmpty:{
+          args: true,
+          msg: 'O identificador não pode está vazio'
+        }
+      }
+    },
+    description: {
+      type: DataTypes.STRING,
+      validate: {
+        notEmpty:{
+          args: true,
+          msg: 'A descrição não pode está vazio'
+        }
+      }
+    },
     is_active: DataTypes.BOOLEAN
   }, {
     sequelize,
