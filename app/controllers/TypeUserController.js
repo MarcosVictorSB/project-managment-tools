@@ -6,9 +6,7 @@ class TypeUsersController {
     
    static async getAllTypeUsers(req, res){
       try {
-         console.log('chegou aqui')
          const allTypeUser = await service.getAllRegistries()
-         console.log(allTypeUser)
          return res.status(200).json(allTypeUser)   
       } catch (error) {
          return res.status(500).json({ message: error })

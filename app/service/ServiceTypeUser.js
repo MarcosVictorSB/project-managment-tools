@@ -2,7 +2,7 @@ const Service = require('./Service')
 const database = require('../models')
 
 class ServiceTypeUser extends Service {
-   constructor(){
+   constructor(){ 
       super('TypeUsers')
    }
 }

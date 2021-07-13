@@ -6,9 +6,8 @@ class TypeTaskController {
    
    static async getAllTypeTask(req, res){
       try {
-         const allRegister = await service.getAllRegistries()
-         console.log('chegou aqui: ', allRegister)
-         return res.status(200).json(allRegister)   
+         const allTypeTask = await service.getAllRegistries()
+         return res.status(200).json(allTypeTask)   
       } catch (error) {
          return res.status(500).json({ message: error })
       }
