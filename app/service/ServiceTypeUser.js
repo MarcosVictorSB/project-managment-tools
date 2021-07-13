@@ -3,7 +3,7 @@ const database = require('../models')
 
 class ServiceTypeUser extends Service {
    constructor(){ 
-      super('TypeUsers')
+      super('TypeUser')
    }
 }
 

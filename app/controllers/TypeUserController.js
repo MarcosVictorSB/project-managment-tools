@@ -9,6 +9,7 @@ class TypeUsersController {
          const allTypeUser = await service.getAllRegistries()
          return res.status(200).json(allTypeUser)   
       } catch (error) {
+         console.log(error)
          return res.status(500).json({ message: error })
       }
    }

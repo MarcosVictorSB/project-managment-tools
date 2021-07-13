@@ -16,4 +16,4 @@ module.exports = (sequelize, DataTypes) => {
     modelName: 'TypeTasks',
   });
   return TypeTask;
-};
+}; 
