@@ -7,7 +7,16 @@ class UsersController {
    
    static async getAllUser(req, res){
       try {
-         const allTypeUser = await service.getAllRegistries()
+         const allTypeUser = await service.getAllUser()
+         return res.status(200).json(allTypeUser)   
+      } catch (error) {
+         return res.status(500).json({ message: error })
+      }
+   }
+
+   static async getUserActive(req, res){
+      try {
+         const allTypeUser = await service.getAllUserStatusActive()
          return res.status(200).json(allTypeUser)   
       } catch (error) {
          return res.status(500).json({ message: error })
