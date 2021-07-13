@@ -20,14 +20,13 @@ module.exports = (sequelize, DataTypes) => {
     is_active: DataTypes.BOOLEAN
   }, {
     sequelize,
+    paranoid: true,
     defaultScope: {
       where: {is_active: true}
     },
-
     scopes: {
       allUsers: {where: {}}
     },
-
     modelName: 'Users',
   });
   return Users;

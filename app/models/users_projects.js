@@ -25,6 +25,7 @@ module.exports = (sequelize, DataTypes) => {
     // horario: DataTypes.STRING
   }, {
     sequelize,
+    paranoid: true,
     modelName: 'Users_Projects',
   });
   return Users_Projects;
