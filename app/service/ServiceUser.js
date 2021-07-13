@@ -6,6 +6,14 @@ class ServiceUser extends Service {
       super('Users')
    }
 
+   async getAllUserStatusActive(where = {}){
+      return database[this.nameModel].findAll({ where: { ...where} })
+   }
+
+   async getAllUser(where = {}){
+      return database[this.nameModel].scope('allUsers').findAll()
+   }
+
    async existThisUserByEmail(email){
       return database[this.nameModel].findAll({ where: { email: email }})
    }
