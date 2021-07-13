@@ -6,6 +6,7 @@ class Service {
    }
 
    async getAllRegistries(where = {}){
+      console.log('dentro do serviço padrão.')
       return database[this.nameModel].findAll({ where: { ...where} })
    }
 
