@@ -1,1 +1,1 @@
-# Ferramente de gerenciamento de proejetos
+# Ferramenta de gerenciamento de projetos
