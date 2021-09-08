@@ -7,6 +7,7 @@ const statusTask = require('./statustask.routes')
 const version = require('./version.routes')
 const tasks = require('./tasks.routes')
 const auth = require('./auth.routes')
+const index = require('./app.routes')
 
 
 module.exports = app => {
@@ -21,6 +22,7 @@ module.exports = app => {
       version,
       tasks,
       auth,
+      index
    )
 }
 
