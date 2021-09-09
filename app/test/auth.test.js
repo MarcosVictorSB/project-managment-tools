@@ -30,6 +30,7 @@ describe('/Authentication ', ()=> {
          .then(res => {
             expect(res.statusCode).toBe(200)
             expect(res.body.token).toBeDefined()
+            expect(res.body).toHaveProperty("token")
          })
    }) 
 
