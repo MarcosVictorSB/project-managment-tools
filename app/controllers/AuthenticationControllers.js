@@ -16,7 +16,7 @@ class AuthenticationController {
                return res.status(401).json('Email ou senha errado')
             }
 
-            const correctPassaword = bcrypt.compareSync(password, user[0].password)         
+            const correctPassaword = bcrypt.compareSync(password.toString(), user[0].password)     
             if(!correctPassaword){
                return res.status(401).json('Email ou senha errado')
             }            
