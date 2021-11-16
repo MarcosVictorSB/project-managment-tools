@@ -5,10 +5,10 @@ const auth = require('../middleware/auth')
 const routes = Router()
 
 routes
-  .get('/tipos-usuarios', auth, TypeUserController.getAllTypeUsers)
-  .post('/tipos-usuarios/', auth, TypeUserController.createNewTypeUser)
-  .get('/tipos-usuarios/:id', auth, TypeUserController.getOneTypeUser)
-  .delete('/tipos-usuarios/:id', auth, TypeUserController.deleteTypeUser)
-  .put('/tipos-usuarios/:id', auth, TypeUserController.updateTypeUser)
+  .get('/tipos-usuarios', auth, TypeUserController.getAll)
+  .post('/tipos-usuarios/', auth, TypeUserController.create)
+  .get('/tipos-usuarios/:id', auth, TypeUserController.getTypeUserById)
+  .delete('/tipos-usuarios/:id', auth, TypeUserController.delete)
+  .put('/tipos-usuarios/:id', auth, TypeUserController.update)
 
 module.exports = routes
