@@ -6,7 +6,7 @@ const routes = Router()
 
 routes
   .get('/tipo-tarefa', auth, TypeTaskController.getAllTypeTask)
-  .post('/tipo-tarefa/criar', auth, TypeTaskController.createNewTypeTask)
+  .post('/tipo-tarefa/', auth, TypeTaskController.createNewTypeTask)
   .get('/tipo-tarefa/:id', auth, TypeTaskController.getOneTypeTask)
   .delete('/tipo-tarefa/:id', auth, TypeTaskController.deleteTypeTask)
   .put('/tipo-tarefa/:id', auth, TypeTaskController.updateTypeTask)

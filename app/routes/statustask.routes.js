@@ -6,7 +6,7 @@
 
  routes
    .get('/status-tarefa', auth, StatusTaskController.getAllStatusTask)
-   .post('/status-tarefa/criar', auth, StatusTaskController.createNewStatusTask)
+   .post('/status-tarefa/', auth, StatusTaskController.createNewStatusTask)
    .get('/status-tarefa/:id', auth, StatusTaskController.getOneStatusTask)
    .delete('/status-tarefa/:id', auth, StatusTaskController.deleteStatusTask)
    .put('/status-tarefa/:id', auth, StatusTaskController.updateStatusTask)

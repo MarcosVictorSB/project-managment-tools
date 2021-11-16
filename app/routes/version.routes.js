@@ -6,7 +6,7 @@
 
  routes
    .get('/versao', auth, VersionController.getAllVersions)
-   .post('/versao/criar', auth, VersionController.createNewVersion)
+   .post('/versao/', auth, VersionController.createNewVersion)
    .get('/versao/:id', auth, VersionController.getOneVersion)
    .delete('/versao/:id', auth, VersionController.deleteVersion)
    .put('/versao/:id', auth, VersionController.updateVersion)
