@@ -44,7 +44,7 @@ class UsersController {
                   id_typeuser: 2,
                })
                
-         return res.status(200).json(newUser)
+         return res.status(201).json(newUser)
          
       } catch (error) {
          return res.status(500).json(error.message)

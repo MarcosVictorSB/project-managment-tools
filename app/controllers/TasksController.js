@@ -18,7 +18,7 @@ class TasksController {
       try {
          const datas = req.body
          const newTypeUser = await service.createRegistry(datas)
-         return res.status(200).json(newTypeUser)
+         return res.status(201).json(newTypeUser)
          
       } catch (error) {
          return res.status(500).json(error.message)
