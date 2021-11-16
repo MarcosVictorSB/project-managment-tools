@@ -4,7 +4,7 @@ const service = new ServiceVersion()
  
 class VersionController {
    
-   static async getAllVersions(req, res){
+   static async getAll(req, res){
       try {
          const allTypeUser = await service.getAllRegistries()
          return res.status(200).json(allTypeUser)   
@@ -13,7 +13,7 @@ class VersionController {
       }
    }
 
-   static async createNewVersion(req, res){
+   static async create(req, res){
       try {
          const datas = req.body
          const newTypeUser = await service.createRegistry(datas)
@@ -24,7 +24,7 @@ class VersionController {
       }
    }
    
-   static async deleteVersion(req, res){
+   static async delete(req, res){
       try {
          const { id } = req.params
          const deletedRegistry = await service.deleteRegistry(id);
@@ -38,7 +38,7 @@ class VersionController {
       }
    }
 
-   static async updateVersion(req, res){
+   static async update(req, res){
       try {
          const { id } = req.params
          const newInfo = req.body
@@ -54,7 +54,7 @@ class VersionController {
       }
    }
 
-   static async getOneVersion(req, res){
+   static async getVersionById(req, res){
       try {
          const { id } = req.params
          const registry = await service.getOneRegistry(Number(id))

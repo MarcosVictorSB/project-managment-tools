@@ -5,10 +5,10 @@
  const routes = Router()
 
  routes
-   .get('/versao', auth, VersionController.getAllVersions)
-   .post('/versao/', auth, VersionController.createNewVersion)
-   .get('/versao/:id', auth, VersionController.getOneVersion)
-   .delete('/versao/:id', auth, VersionController.deleteVersion)
-   .put('/versao/:id', auth, VersionController.updateVersion)
+   .get('/versao', auth, VersionController.getAll)
+   .post('/versao/', auth, VersionController.create)
+   .get('/versao/:id', auth, VersionController.getVersionById)
+   .delete('/versao/:id', auth, VersionController.delete)
+   .put('/versao/:id', auth, VersionController.update)
 
 module.exports = routes
