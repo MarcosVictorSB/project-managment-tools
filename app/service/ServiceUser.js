@@ -1,7 +1,7 @@
-const Service = require('./Service')
+const IService = require('./Service')
 const database = require('../models')
 
-class ServiceUser extends Service {
+class ServiceUser extends IService {
    constructor(){
       super('Users')
    }

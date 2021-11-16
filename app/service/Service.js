@@ -1,29 +1,29 @@
 const database = require('../models')
 
-class Service {
+class IService {
    constructor(nameModel){
       this.nameModel = nameModel
    }
 
-   async getAllRegistries(where = {}){
+   async getAll(where = {}){
       return database[this.nameModel].findAll({ where: { ...where} })
    }
 
-   async getOneRegistry(id){
+   async getById(id){
       return database[this.nameModel].findOne({ where: { id: id} })
    }
 
-   async createRegistry(datas){
+   async create(datas){
       return database[this.nameModel].create(datas)
    }
 
-   async updateRegistry(updateDatas, id){
+   async update(updateDatas, id){
       return database[this.nameModel].update(updateDatas, { where: { id: id} })
    }
 
-   async deleteRegistry(id){
+   async delete(id){
       return database[this.nameModel].destroy({where : {id: Number(id)}})
    }
 }
 
-module.exports = Service
+module.exports = IService
