@@ -6,6 +6,4 @@ const app = express()
 
 routes(app)
 
-
-
 module.exports = app
