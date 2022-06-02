@@ -1,11 +1,6 @@
 const UserRepository = require('../repositories/user-repository')
+const { conflict } = require('../../../protocols/http')
 
-const userAlreadyExists = {
-  status: 409,
-  body: {
-    msg: 'User already exists'
-  }
-}
 
 class UserService {
   constructor(params = {}){
@@ -15,7 +10,7 @@ class UserService {
     try {
       const user = await this.getUserBy(params.email);
       if(user){
-        return userAlreadyExists
+        return conflict('Usuario já existe')
       }
       const result = await this.repository.create(user);
       return result;
