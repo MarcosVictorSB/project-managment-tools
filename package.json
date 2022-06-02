@@ -22,5 +22,8 @@
     "sequelize": "^6.6.2",
     "sequelize-cli": "^6.2.0",
     "supertest": "^6.1.6"
+  },
+  "devDependencies": {
+    "sinon": "^14.0.0"
   }
 }
