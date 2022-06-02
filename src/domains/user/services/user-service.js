@@ -1,5 +1,6 @@
 const UserRepository = require('../repositories/user-repository')
-const { conflict } = require('../../../protocols/http')
+const { conflict } = require('../../../protocols/http');
+const enumsHelpes = require('../../../helpers/enumsHelpers');
 
 
 class UserService {
@@ -10,7 +11,7 @@ class UserService {
     try {
       const user = await this.getUserBy(params.email);
       if(user){
-        return conflict('Usuario já existe')
+        return conflict(enumsHelpes.user.alreadyExists)
       }
       const result = await this.repository.create(user);
       return result;
