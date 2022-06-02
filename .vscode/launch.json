@@ -1,0 +1,17 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Deveelopment",
+      "program": "${workspaceRoot}/src/server.js",
+      "runtimeExecutable": "/home/marcos.barbosa/.nvm/versions/node/v12.22.8/bin/node",
+      "runtimeVersion": "default",
+      "address": "localhost",
+      "protocol": "inspector",
+      "console": "integratedTerminal",
+      "envFile": "${workspaceFolder}/.env",
+    }
+  ]
+}
