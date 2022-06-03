@@ -1,5 +1,6 @@
 const bcrypt = require('bcryptjs')
 const UserService = require('../services/user-service')
+const { created } = require('../../../protocols/http')
 
 class UserController {  
   constructor(params = {}) {
@@ -14,10 +15,8 @@ class UserController {
         email,
         password
       }
-      const response = await this.userService.create(params)
-      console.log({response})
-         
-      return res.status(response.status).json(response.body) 
+      const response = await this.userService.create(params)         
+      return res.status(response.status).json(response.body) ;
         
     } catch (error) {
         return res.status(500).json(error.message)

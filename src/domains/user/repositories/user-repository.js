@@ -11,7 +11,6 @@ class UserRepository {
     } catch (error) {
       return error.message
     }
-    
   }
 
   async getUserBy(email){
