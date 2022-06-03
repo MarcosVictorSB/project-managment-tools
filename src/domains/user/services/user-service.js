@@ -9,7 +9,7 @@ class UserService {
   }
   async create(params) {
     try {
-      const user = await this.getUserBy(params.email);
+      const user = await this.repository.getUserBy(params.email);
       if(user){
         return conflict(enumsHelpes.user.alreadyExists)
       }
