@@ -1,4 +1,5 @@
 const HttpStatusCode = {
+  Created: 201,
   Conflict: 409
 }
 
@@ -10,6 +11,14 @@ const conflict = (error) => ({
   }
 })
 
+const created = (response) => ({
+  status: HttpStatusCode.Created,
+  body: {
+    result: response,
+  }
+})
+
 module.exports = {
+  created,
   conflict
 }
