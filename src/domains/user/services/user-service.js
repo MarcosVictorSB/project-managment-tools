@@ -1,7 +1,7 @@
 const UserRepository = require('../repositories/user-repository')
 const { conflict, created, serverError } = require('../../../protocols/http');
 const enumsHelpesUser = require('../../../helpers/enumsHelpersUser');
-const { use } = require('chai');
+const generateHashPassword = require('../utils/generateHash');
 
 
 class UserService {
@@ -18,8 +18,9 @@ class UserService {
       const newUser = {
         name: params.name,
         email: params.email,
-        password: params.password
+        password: generateHashPassword(params.password)
       }
+      
       const userCreated = await this.repository.create(newUser);
       if(!userCreated){
         return conflict(enumsHelpesUser.user.errorToCreatedUser);
