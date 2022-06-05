@@ -1,5 +1,5 @@
 const express = require('express')
-const routes = require('./routes')
+const routes = require('./../src/legacy/routes')
 const path = require('path')
 const logger = require('./helpers/logger');
 
