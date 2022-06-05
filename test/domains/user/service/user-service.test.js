@@ -24,8 +24,11 @@ describe('User Service', () => {
       getUserBy: sinon.stub().resolves(this.user),
       create: sinon.stub().resolves(this.user)
     } 
+    
+    this.service.generateHashPassword = sinon.stub().resolves('any_password')
   })
 
+  describe('create', () => {
   it('return status code 409 and already exist user', async () => {
     const response = await this.service.create(this.params.email)   
     

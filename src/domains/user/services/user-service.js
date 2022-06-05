@@ -7,7 +7,9 @@ const generateHashPassword = require('../utils/generateHash');
 class UserService {
   constructor(params = {}){
     this.repository = params.repository || new UserRepository();
+    this.generateHashPassword = params.generateHashPassword || generateHashPassword
   }
+
   async create(params) {
     try {
       const user = await this.repository.getUserBy(params.email); 
@@ -18,9 +20,9 @@ class UserService {
       const newUser = {
         name: params.name,
         email: params.email,
-        password: generateHashPassword(params.password)
+        password: await this.generateHashPassword(params.password)
       }
-      
+
       const userCreated = await this.repository.create(newUser);
       if(!userCreated){
         return conflict(enumsHelpesUser.user.errorToCreatedUser);
@@ -30,6 +32,10 @@ class UserService {
     } catch (error) {
       return serverError(error.message)
     }
+  }
+
+  async getById(params){
+    
   }
 }
 
