@@ -1,6 +1,6 @@
 const UserRepository = require('../repositories/user-repository')
-const { conflict, created, serverError } = require('../../../protocols/http');
-const enumsHelpesUser = require('../../../helpers/enumsHelpersUser');
+const { conflict, created, serverError, notFound, OK } = require('../../../protocols/http');
+const enumHelperUser = require('../../../helpers/enumHelperUser');
 const generateHashPassword = require('../utils/generateHash');
 
 
@@ -14,7 +14,7 @@ class UserService {
     try {
       const user = await this.repository.getUserBy(params.email); 
       if(user){
-        return conflict(enumsHelpesUser.user.alreadyExists)
+        return conflict(enumHelperUser.user.alreadyExists)
       }
 
       const newUser = {
@@ -25,7 +25,7 @@ class UserService {
 
       const userCreated = await this.repository.create(newUser);
       if(!userCreated){
-        return conflict(enumsHelpesUser.user.errorToCreatedUser);
+        return conflict(enumHelperUser.user.errorToCreatedUser);
       }
 
       return created(userCreated);
@@ -34,7 +34,17 @@ class UserService {
     }
   }
 
-  async getById(params){
+  async getById(id){
+    try {
+      const response = await this.repository.getById(id); 
+      if(!response){
+        return notFound(enumHelperUser.user.notFoundUser)
+      }
+
+      return OK(response)
+    } catch (error) {
+      return serverError(error.message)
+    }
     
   }
 }

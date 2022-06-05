@@ -20,7 +20,15 @@ class UserRepository {
     } catch (error) {
       return error.message
     }
-    
+  }
+
+  async getById(id){
+    try {
+      const user = await database[this.nameModel].findOne({ where: { id: id }})
+      return user;
+    } catch (error) {
+      return error.message
+    }
   }
 }
 
