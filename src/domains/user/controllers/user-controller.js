@@ -1,6 +1,6 @@
 const bcrypt = require('bcryptjs')
 const UserService = require('../services/user-service')
-const { created } = require('../../../protocols/http')
+const { created, serverError } = require('../../../protocols/http')
 
 class UserController {  
   constructor(params = {}) {
@@ -16,16 +16,26 @@ class UserController {
         password
       }
       const response = await this.userService.create(params)         
-      return res.status(response.status).json(response.body) ;
+      return res.status(response.status).json(response.body)
         
     } catch (error) {
-        return res.status(500).json(error.message)
+      return serverError(error.message)
     }
   }
 
   createHash(password){
     var salt = bcrypt.genSaltSync(10)
     return bcrypt.hashSync(password, salt)
+  }
+
+  async getById(req, res){
+    try {
+      const { id } = req.params
+      const response = await this.userService.getById(id)
+      return res.status(response.status).json(response.body)
+    } catch (error) {
+      return serverError(error.message)
+    }
   }
 
 }
