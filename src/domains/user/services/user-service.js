@@ -44,8 +44,20 @@ class UserService {
       return OK(response)
     } catch (error) {
       return serverError(error.message)
-    }
-    
+    }    
+  }
+
+  async getAllUser() {
+    try {
+      const response = await this.repository.getAllUser(); 
+      if(!response){
+        return notFound(enumHelperUser.user.notFoundUser)
+      }
+
+      return OK(response);
+    } catch (error) {
+      return serverError(error.message)
+    }    
   }
 }
 

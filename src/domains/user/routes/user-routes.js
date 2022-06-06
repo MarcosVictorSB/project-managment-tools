@@ -6,5 +6,6 @@ const routes = Router()
   routes
     .post('/users/', (...args) => controller.create(...args))
     .get('/users/:id', (...args) => controller.getById(...args))
+    .get('/users/', (...args) => controller.getAllUser(...args))
 
 module.exports = routes

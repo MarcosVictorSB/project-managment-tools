@@ -30,6 +30,15 @@ class UserRepository {
       return error.message
     }
   }
+
+  async getAllUser(){
+    try {
+      const user = await database[this.nameModel].findAll()
+      return user;
+    } catch (error) {
+      return error.message
+    }
+  }
 }
 
 module.exports = UserRepository
