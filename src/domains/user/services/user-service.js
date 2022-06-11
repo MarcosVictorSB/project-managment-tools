@@ -60,7 +60,7 @@ class UserService {
     }    
   }
 
-  async update(params) {
+  async update(id, params) {
     try {
       const { password } = params;
       if(password){
@@ -68,7 +68,7 @@ class UserService {
         params.password = hash;
       }
 
-      const user = await this.repository.update(params);
+      const user = await this.repository.update(id, params);
 
       if(!user){
         return noContent(enumHelperUser.user.notFoundUser)

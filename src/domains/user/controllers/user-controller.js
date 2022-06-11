@@ -1,22 +1,22 @@
 const bcrypt = require('bcryptjs')
 const UserService = require('../services/user-service')
-const { created, serverError } = require('../../../protocols/http')
+const { serverError } = require('../../../protocols/http');
 
 class UserController {  
   constructor(params = {}) {
     this.userService = params.userService || new UserService();
   }
 
-  async create(req, res){      
+  async create(request, response){      
     try {
-      const { name, email, password } = req.body
+      const { name, email, password } = request.body
       const params = {
         name,
         email,
         password
       }
-      const response = await this.userService.create(params)         
-      return res.status(response.status).json(response.body)
+      const result = await this.userService.create(params)         
+      return response.status(result.status).json(result.body)
         
     } catch (error) {
       return serverError(error.message)
@@ -28,29 +28,33 @@ class UserController {
     return bcrypt.hashSync(password, salt)
   }
 
-  async getById(req, res){
+  async getById(request, response){
     try {
-      const { id } = req.params
-      const response = await this.userService.getById(id)
-      return res.status(response.status).json(response.body)
+      const { id } = request.params
+      const result = await this.userService.getById(id)
+      return response.status(result.status).json(result.body)
     } catch (error) {
       return serverError(error.message)
     }
   }
 
-  async getAllUser(req, res) {
+  async getAllUser(request, response) {
     try {
-      const response = await this.userService.getAllUser()
-      return res.status(response.status).json(response)
+      const result = await this.userService.getAllUser()
+      return response.status(result.status).json(result)
     } catch (error) {
       return serverError(error.message)
     }
   }
 
-  async update(req, res) {
+  async update(request, response) {
     try {
-      const response = await this.userService.update(req.body)
-      return res.status(response.status).json(response)
+      const { id } = request.params
+      const params = request.body;
+
+      const result = await this.userService.update(id, params)
+      
+      return response.status(result.status).json(result)
     } catch (error) {
       return serverError(error.message)
     }

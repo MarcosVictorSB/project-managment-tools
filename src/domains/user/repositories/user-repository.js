@@ -40,9 +40,9 @@ class UserRepository {
     }
   }
 
-  async update(params){
+  async update(id, params){
     try {
-      const user = await database[this.nameModel].update(params, { where: { id: params.id} })
+      const user = await database[this.nameModel].update(params, { where: { id: id} })
       return user;
     } catch (error) {
       return error.message
