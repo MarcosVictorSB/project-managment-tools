@@ -8,5 +8,6 @@ const routes = Router()
     .get('/users/:id', (...args) => controller.getById(...args))
     .get('/users/', (...args) => controller.getAllUser(...args))
     .put('/users/:id', (...args) => controller.update(...args))
+    .delete('/users/:id', (...args) => controller.delete(...args))
 
 module.exports = routes

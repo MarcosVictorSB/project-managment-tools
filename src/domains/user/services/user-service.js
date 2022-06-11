@@ -1,5 +1,5 @@
 const UserRepository = require('../repositories/user-repository')
-const { conflict, created, serverError, notFound, OK } = require('../../../protocols/http');
+const { conflict, created, serverError, notFound, OK, noContent } = require('../../../protocols/http');
 const enumHelperUser = require('../../../helpers/enumHelperUser');
 const generateHashPassword = require('../utils/generateHash');
 
@@ -76,6 +76,22 @@ class UserService {
 
       return OK(enumHelperUser.user.updateUser)
 
+    } catch (error) {
+      return serverError(error.message)
+    }
+  }
+
+  async delete(id) {
+    try {
+
+      const result = await this.repository.delete(id)
+      if(!result){
+        return noContent(enumHelperUser.user.notFoundUser)
+      }
+
+      console.log({ result })
+      
+      return OK(enumHelperUser.user.delete)
     } catch (error) {
       return serverError(error.message)
     }

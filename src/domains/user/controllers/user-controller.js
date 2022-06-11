@@ -60,6 +60,18 @@ class UserController {
     }
   }
 
+  async delete(request, response) {
+    try {
+      const { id } = request.params
+
+      const result = await this.userService.delete(Number(id))
+      
+      return response.status(result.status).json(result)
+    } catch (error) {
+      return serverError(error.message)
+    }
+  }
+
 }
 
 

@@ -48,6 +48,15 @@ class UserRepository {
       return error.message
     }
   }
+
+  async delete(id){
+    try {
+      const user = await database[this.nameModel].destroy({where : {id: id }})
+      return user;
+    } catch (error) {
+      return error.message
+    }
+  }
 }
 
 module.exports = UserRepository
