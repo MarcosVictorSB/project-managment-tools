@@ -88,8 +88,6 @@ class UserService {
       if(!result){
         return noContent(enumHelperUser.user.notFoundUser)
       }
-
-      console.log({ result })
       
       return OK(enumHelperUser.user.delete)
     } catch (error) {
