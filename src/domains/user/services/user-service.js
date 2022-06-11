@@ -36,12 +36,12 @@ class UserService {
 
   async getById(id){
     try {
-      const response = await this.repository.getById(id); 
-      if(!response){
+      const user = await this.repository.getById(id); 
+      if(!user){
         return notFound(enumHelperUser.user.notFoundUser)
       }
 
-      return OK(response)
+      return OK(user)
     } catch (error) {
       return serverError(error.message)
     }    
@@ -49,15 +49,36 @@ class UserService {
 
   async getAllUser() {
     try {
-      const response = await this.repository.getAllUser(); 
-      if(!response){
+      const users = await this.repository.getAllUser(); 
+      if(!users){
         return notFound(enumHelperUser.user.notFoundUser)
       }
 
-      return OK(response);
+      return OK(users);
     } catch (error) {
       return serverError(error.message)
     }    
+  }
+
+  async update(params) {
+    try {
+      const { password } = params;
+      if(password){
+        const hash = await this.generateHashPassword(params.password)
+        params.password = hash;
+      }
+
+      const user = await this.repository.update(params);
+
+      if(!user){
+        return noContent(enumHelperUser.user.notFoundUser)
+      }
+
+      return OK(enumHelperUser.user.updateUser)
+
+    } catch (error) {
+      return serverError(error.message)
+    }
   }
 }
 

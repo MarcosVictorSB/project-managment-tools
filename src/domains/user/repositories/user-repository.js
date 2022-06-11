@@ -39,6 +39,15 @@ class UserRepository {
       return error.message
     }
   }
+
+  async update(params){
+    try {
+      const user = await database[this.nameModel].update(params, { where: { id: params.id} })
+      return user;
+    } catch (error) {
+      return error.message
+    }
+  }
 }
 
 module.exports = UserRepository

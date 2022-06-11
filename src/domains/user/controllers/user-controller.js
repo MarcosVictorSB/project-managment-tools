@@ -47,6 +47,15 @@ class UserController {
     }
   }
 
+  async update(req, res) {
+    try {
+      const response = await this.userService.update(req.body)
+      return res.status(response.status).json(response)
+    } catch (error) {
+      return serverError(error.message)
+    }
+  }
+
 }
 
 
