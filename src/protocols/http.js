@@ -3,6 +3,7 @@
 const HttpStatusCode = {
   OK: 200,
   Created: 201,
+  noContent: 204,
   notFound: 404,
   Conflict: 409,
   serverError: 500
@@ -16,6 +17,11 @@ const OK = (response) => ({
 const conflict = (error) => ({
   status: HttpStatusCode.Conflict,
   body: { error }
+})
+
+const noContent = (message) => ({
+  status: HttpStatusCode.noContent,
+  body: { result: message }
 })
 
 const created = (response) => ({
@@ -39,5 +45,6 @@ module.exports = {
   conflict,
   serverError,
   notFound,
-  OK
+  OK,
+  noContent
 }
