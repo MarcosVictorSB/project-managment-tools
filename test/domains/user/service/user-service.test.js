@@ -15,8 +15,29 @@ describe('User Service', () => {
       password: 'any_password'
     }
 
+    this.users = [
+      {
+        id: 1,
+        name: 'any_name',
+        email: 'any_email',
+        password: 'any_password'
+      },
+      {
+        id: 2,
+        name: 'any_name',
+        email: 'any_email',
+        password: 'any_password'
+      }
+    ]
+
     this.params = {
       id: 1,
+      name: 'any_name',
+      email: 'any_email',
+      password: 'any_password'
+    }
+
+    this.newUser = {
       name: 'any_name',
       email: 'any_email',
       password: 'any_password'
@@ -26,6 +47,7 @@ describe('User Service', () => {
       getUserBy: sinon.stub().resolves(this.user),
       create: sinon.stub().resolves(this.user),
       getById: sinon.stub().rejects(),
+      getAllUser: sinon.stub().resolves()
     }
     
     this.service.generateHashPassword = sinon.stub().resolves('any_password')
@@ -41,9 +63,9 @@ describe('User Service', () => {
       
     })
   
-    it('return status code 409 when the repository create fails', async () => {
-      this.service.repository.getUserBy = sinon.stub().resolves(undefined);
-      this.service.repository.create = sinon.stub().resolves(undefined);
+    it('return status code 409 when the getUserBy not return value', async () => {
+      this.service.repository.getUserBy = sinon.stub().resolves();
+      this.service.repository.create = sinon.stub().resolves();
       
       const response = await this.service.create(this.params)   
       
@@ -53,7 +75,7 @@ describe('User Service', () => {
       sinon.assert.calledOnceWithExactly(this.service.repository.getUserBy, this.params.email)
       
       sinon.assert.calledOnce(this.service.repository.create)
-      sinon.assert.calledOnceWithExactly(this.service.repository.create, this.params)
+      sinon.assert.calledOnceWithExactly(this.service.repository.create, this.newUser)
       
     })
   
@@ -68,11 +90,11 @@ describe('User Service', () => {
       sinon.assert.calledOnceWithExactly(this.service.repository.getUserBy, this.params.email)
       
       sinon.assert.calledOnce(this.service.repository.create)
-      sinon.assert.calledOnceWithExactly(this.service.repository.create, this.params)
+      sinon.assert.calledOnceWithExactly(this.service.repository.create, this.newUser)
     })
   })
 
-  describe.only('getById', () => {
+  describe('getById', () => {
     it('return status code 500 when getById fails', async () =>{
       const response = await this.service.getById(this.params.id);
       expect(response.status).to.eql(HttpStatusCode.serverError)
@@ -98,6 +120,37 @@ describe('User Service', () => {
       expect(response.body.result).to.eql(this.user)
       sinon.assert.calledOnce(this.service.repository.getById)
       sinon.assert.calledOnceWithExactly(this.service.repository.getById, this.params.id)
+    })
+  })
+
+  describe('getAllUser', () => {
+    it('return status code 404 when getAllUser not found user', async () =>{
+      const response = await this.service.getAllUser();
+      expect(response.status).to.eql(HttpStatusCode.notFound)
+      expect(response.body.result).to.eql(enumHelperUser.user.notFoundUser)
+      sinon.assert.calledOnce(this.service.repository.getAllUser)
+    })
+
+    it('return status code 200 and return all users', async () =>{
+      this.service.repository.getAllUser = sinon.stub().resolves(this.users)
+      const response = await this.service.getAllUser();
+
+      expect(response.status).to.eql(HttpStatusCode.OK)
+      sinon.assert.calledOnce(this.service.repository.getAllUser)
+      expect(response.body.result).to.eql(this.users)
+    })
+
+    it('return status code 500 when getAllUser fails', async () =>{
+      this.service.repository.getAllUser = sinon.stub().rejects()
+      this.error = {
+        error: 'Error'
+      }
+      
+      const response = await this.service.getAllUser();
+      
+      expect(response.status).to.eql(HttpStatusCode.serverError)
+      expect(response.body).to.eql(this.error)
+      sinon.assert.calledOnce(this.service.repository.getAllUser)
     })
   })
   
