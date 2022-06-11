@@ -12,7 +12,9 @@ describe('User Service', () => {
       id: 1,
       name: 'any_name',
       email: 'any_email',
-      password: 'any_password'
+      password: 'any_password',
+      id_typeuser: 2,
+		  is_active: true,
     }
 
     this.users = [
@@ -34,20 +36,23 @@ describe('User Service', () => {
       id: 1,
       name: 'any_name',
       email: 'any_email',
-      password: 'any_password'
+      password: 'any_password',      
     }
 
     this.newUser = {
       name: 'any_name',
       email: 'any_email',
-      password: 'any_password'
+      password: 'any_password',
+      id_typeuser: 2,
+		  is_active: true,
     }
     
     this.service.repository = {
       getUserBy: sinon.stub().resolves(this.user),
       create: sinon.stub().resolves(this.user),
       getById: sinon.stub().rejects(),
-      getAllUser: sinon.stub().resolves()
+      getAllUser: sinon.stub().resolves(),
+      update: sinon.stub().resolves()
     }
     
     this.service.generateHashPassword = sinon.stub().resolves('any_password')
@@ -60,6 +65,8 @@ describe('User Service', () => {
       expect(response.status).to.eql(HttpStatusCode.Conflict)
       expect(response.body.error).to.eql(enumHelperUser.user.alreadyExists)
       sinon.assert.calledOnce(this.service.repository.getUserBy)
+      sinon.assert.notCalled(this.service.repository.create)
+      
       
     })
   
@@ -151,6 +158,38 @@ describe('User Service', () => {
       expect(response.status).to.eql(HttpStatusCode.serverError)
       expect(response.body).to.eql(this.error)
       sinon.assert.calledOnce(this.service.repository.getAllUser)
+    })
+  })
+
+  describe('update', () => {
+    it('return status code 204 when update not found the user', async () => {
+      const response = await this.service.update(this.user.id, this.params)
+
+      expect(response.status).to.eql(HttpStatusCode.noContent)
+      expect(response.body.result).to.eql(enumHelperUser.user.notFoundUser)
+      sinon.assert.calledOnce(this.service.repository.update)
+      sinon.assert.alwaysCalledWith(this.service.repository.update, this.user.id, this.params)
+
+    })
+
+    it('return status code 200 after update user', async () => {
+      this.service.repository.update = sinon.stub().resolves(this.user)
+      
+      const response = await this.service.update(this.user.id, this.params)
+
+      expect(response.status).to.eql(HttpStatusCode.OK)
+      expect(response.body.result).to.eql(enumHelperUser.user.updateUser)
+      sinon.assert.calledOnce(this.service.repository.update)
+      sinon.assert.alwaysCalledWith(this.service.repository.update, this.user.id, this.params)
+    })
+
+    it('return status code 200 after update user', async () => {
+      this.service.repository.update = sinon.stub().rejects()
+      
+      const response = await this.service.update(this.user.id, this.params)
+
+      expect(response.status).to.eql(HttpStatusCode.serverError)
+      expect(response.body.result).to.eql(enumHelperUser.user.updateUser)
     })
   })
   

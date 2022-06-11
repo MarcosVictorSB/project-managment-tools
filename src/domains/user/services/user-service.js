@@ -3,6 +3,7 @@ const { conflict, created, serverError, notFound, OK, noContent } = require('../
 const enumHelperUser = require('../../../helpers/enumHelperUser');
 const generateHashPassword = require('../utils/generateHash');
 
+const DEVELOPER = 2
 
 class UserService {
   constructor(params = {}){
@@ -20,7 +21,9 @@ class UserService {
       const newUser = {
         name: params.name,
         email: params.email,
-        password: await this.generateHashPassword(params.password)
+        password: await this.generateHashPassword(params.password),
+        id_typeuser: DEVELOPER,
+        is_active: true
       }
 
       const userCreated = await this.repository.create(newUser);
