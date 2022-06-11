@@ -20,6 +20,9 @@ module.exports = {
       is_active: {
         type: Sequelize.BOOLEAN
       },
+      id_typeuser: {
+        type: Sequelize.INTEGER
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
