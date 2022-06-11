@@ -1,30 +1,15 @@
 const database = require('./../../../../models')
+const IRepository = require('../../../contracts/IRepository')
 
-class UserRepository {
+class UserRepository extends IRepository {
   constructor(params = {}){
+    super('Users')
     this.nameModel = params.nameModel ||'Users'
   }
 
-  async create(user){
-    try {
-      return await database[this.nameModel].create(user)
-    } catch (error) {
-      return error.message
-    }
-  }
-
-  async getUserBy(email){
+ async getUserBy(email){
     try {
       const user = await database[this.nameModel].findOne({ where: { email: email }})
-      return user;
-    } catch (error) {
-      return error.message
-    }
-  }
-
-  async getById(id){
-    try {
-      const user = await database[this.nameModel].findOne({ where: { id: id }})
       return user;
     } catch (error) {
       return error.message
@@ -34,24 +19,6 @@ class UserRepository {
   async getAllUser(){
     try {
       const user = await database[this.nameModel].findAll()
-      return user;
-    } catch (error) {
-      return error.message
-    }
-  }
-
-  async update(id, params){
-    try {
-      const user = await database[this.nameModel].update(params, { where: { id: id} })
-      return user;
-    } catch (error) {
-      return error.message
-    }
-  }
-
-  async delete(id){
-    try {
-      const user = await database[this.nameModel].destroy({where : {id: id }})
       return user;
     } catch (error) {
       return error.message
